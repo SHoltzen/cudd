@@ -292,7 +292,6 @@ typedef void (*DD_TOHFP)(DdManager *, void *);
 */
 #define Cudd_Not(node) ((DdNode *)((uintptr_t)(node) ^ (uintptr_t) 01))
 
-
 /**
   @brief Complements a %DD if a condition is true.
 
@@ -502,7 +501,8 @@ typedef void (*DD_TOHFP)(DdManager *, void *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+  // add a function for Cudd_Not_f, to make it available to external libraries
+extern DdNode * Cudd_Not_f(DdNode* a);
 extern DdNode * Cudd_addNewVar(DdManager *dd);
 extern DdNode * Cudd_addNewVarAtLevel(DdManager *dd, int level);
 extern DdNode * Cudd_bddNewVar(DdManager *dd);
@@ -595,7 +595,7 @@ extern double Cudd_ReadMaxGrowthAlternate(DdManager * dd);
 extern void Cudd_SetMaxGrowthAlternate(DdManager * dd, double mg);
 extern int Cudd_ReadReorderingCycle(DdManager * dd);
 extern void Cudd_SetReorderingCycle(DdManager * dd, int cycle);
-extern unsigned int Cudd_NodeReadIndex(DdNode *node);
+extern unsigned int Cudd_NodeReadIndex(DdNode *node); // <--
 extern int Cudd_ReadPerm(DdManager *dd, int i);
 extern int Cudd_ReadPermZdd(DdManager *dd, int i);
 extern int Cudd_ReadInvPerm(DdManager *dd, int i);
